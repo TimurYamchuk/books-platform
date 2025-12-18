@@ -1,0 +1,78 @@
+/* Общий сброс и контейнер */
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Стили для компонента App */
+.app-container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    color: #333; /* Добавлено, чтобы текст был виден на светлом фоне */
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* Список книг */
+.book-list {
+    list-style: none;
+    padding: 0;
+}
+
+.book-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-left: 5px solid #007bff; /* Акцентный цвет */
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.title {
+    font-weight: bold;
+    color: #007bff;
+    flex-grow: 1; 
+    text-align: left;
+}
+
+.author {
+    color: #666;
+    font-style: italic;
+    margin-left: 20px;
+    flex-shrink: 0;
+}
+
+.error {
+    color: #cc0000;
+    font-weight: bold;
+    background-color: #ffeaea;
+    padding: 15px;
+    border: 1px solid #cc0000;
+}

@@ -1,0 +1,56 @@
+/* Весь экран с градиентом */
+.auth-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #448aff 0%, #e3f2fd 100%);
+    margin: 0;
+    padding: 0;
+    z-index: 9999;
+}
+
+/* Белая карточка формы */
+.auth-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+
+.auth-card h2 {
+    color: #007bff;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+/* Стили полей ввода */
+.auth-card label {
+    display: block;
+    text-align: left;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.btn-auth {
+    background-color: #3b82f6;
+    border: none;
+    border-radius: 50px;
+    padding: 12px;
+    width: 100%;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+.btn-auth:hover {
+    background-color: #2563eb;
+}
