@@ -1,32 +1,34 @@
 package com.example.books.controller;
 
-import com.example.books.model.Book;       // Проверьте путь (может быть model.Book)
-import com.example.books.service.BookService; // Проверьте путь (может быть service.BookService)
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List; // Для List<Book>
+import com.example.books.model.Book;
+import com.example.books.repository.BookRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "http://localhost:5173") 
 @RestController 
 @RequestMapping("/api/books") 
 public class BookController {
 
-    private final BookService bookService;
+    private final BookRepository bookRepository;
 
-    public BookController(BookService bookService) {
-        this.bookService = bookService;
+    public BookController(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
     }
 
     @GetMapping
-    public List<Book> getAllBooks(@RequestParam(required = false) String q) {
-        // Мы УДАЛЯЕМ ЛОГИКУ ПОИСКА, чтобы просто скомпилировать.
-        // Если вам нужен поиск, убедитесь, что его логика правильная.
-        return bookService.findAllBooks();
-    }
+    public Page<Book> getAllBooks(
+            @RequestParam(required = false) String q,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "6") int size) {
+        
+        Pageable pageable = PageRequest.of(page, size);
 
-    // Если у вас нет других методов, то здесь должна быть только закрывающая скобка класса.
-} // <-- Обязательно должна быть!
+        if (q != null && !q.isEmpty()) {
+            return bookRepository.findByTitleContainingIgnoreCaseOrAuthorContainingIgnoreCase(q, q, pageable);
+        }
+        return bookRepository.findAll(pageable);
+    }
+}

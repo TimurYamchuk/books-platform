@@ -1,10 +1,8 @@
--- data.sql
--- Создает начальные тестовые данные для таблицы Book, которые будут загружены в H2 при запуске
-INSERT INTO book (id, title, author, isbn, price, publication_year, genre) VALUES
-(1, 'Война и мир', 'Лев Толстой', '978-5-17-094038-0', 599.99, 1869, 'Роман-эпопея'),
-(2, 'Мастер и Маргарита', 'Михаил Булгаков', '978-5-389-02685-1', 450.00, 1966, 'Фантастический роман'),
-(3, 'Преступление и наказание', 'Федор Достоевский', '978-5-17-084776-4', 350.50, 1866, 'Философский роман');
+DELETE FROM books;
+ALTER TABLE books ALTER COLUMN id RESTART WITH 1;
 
--- Убедимся, что счетчик ID продолжает отсчет после наших ручных данных, 
--- чтобы POST-запросы не привели к ошибке дублирования ID (RESTART WITH 4, т.к. последний ID=3)
-ALTER TABLE book ALTER COLUMN id RESTART WITH 4;
+INSERT INTO books (title, author, rating, last_rated) VALUES 
+('The Great Gatsby', 'F. Scott Fitzgerald', 5, CURRENT_TIMESTAMP), -- Сьогодні (тільки час)
+('1984', 'George Orwell', 4, '2025-12-15T15:30:00'),                -- 3 дні тому
+('The Hobbit', 'J.R.R. Tolkien', 5, '2025-12-01T12:00:00'),         -- Стара дата
+('Java Programming', 'John Smith', 3, '2025-11-20T09:15:00');       -- Стара дата

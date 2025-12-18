@@ -1,14 +1,24 @@
 import React from 'react';
 import './Auth.css';
-import { Container, Form, Button } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 function Register() {
     const navigate = useNavigate();
 
+    const countries = [
+        "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
+        "Bahamas", "Bahrain", "Bangladesh", "Belgium", "Brazil", "Bulgaria", "Canada", "Chile", "Colombia", 
+        "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Egypt", "Estonia", "Finland", "France", "Georgia", "Germany", 
+        "Greece", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Japan", "Kazakhstan", 
+        "Latvia", "Lithuania", "Luxembourg", "Mexico", "Moldova", "Monaco", "Montenegro", "Netherlands", "Norway", "Poland", 
+        "Portugal", "Romania", "Serbia", "Slovakia", "Slovenia", "South Africa", "Spain", "Sweden", "Switzerland", 
+        "Thailand", "Turkey", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uzbekistan", "Vietnam"
+    ];
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        // После нажатия на кнопку переходим к списку книг
+        // Після успішної реєстрації переходимо до каталогу
         navigate('/books');
     };
 
@@ -19,11 +29,12 @@ function Register() {
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3">
                         <Form.Label>Email:</Form.Label>
+                        {/* ВИПРАВЛЕНО: дефіс у pattern перенесено в кінець для уникнення SyntaxError */}
                         <Form.Control 
                             type="email" 
                             required 
-                            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-                            title="Enter a valid email address"
+                            pattern="[a-zA-Z0-9._%+ \-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$" 
+                            title="Введіть коректний email"
                         />
                     </Form.Group>
 
@@ -32,8 +43,8 @@ function Register() {
                         <Form.Control 
                             type="password" 
                             required 
-                            pattern="(?=.*[A-Z]).{8,}"
-                            title="Password must be at least 8 characters and contain at least one uppercase letter"
+                            pattern="(?=.*[A-Z]).{8,}" 
+                            title="Мінімум 8 символів та 1 велика літера" 
                         />
                     </Form.Group>
 
@@ -42,24 +53,20 @@ function Register() {
                         <Form.Control 
                             type="tel" 
                             required 
-                            pattern="[0-9]{10}"
-                            title="Enter a valid 10-digit phone number"
+                            pattern="[0-9]{10}" 
+                            title="Введіть 10 цифр номера телефону" 
                         />
                     </Form.Group>
 
                     <Form.Group className="mb-3">
                         <Form.Label>Country:</Form.Label>
-                        <Form.Select required>
-                            <option value="uk">Ukrain</option>
-                            <option value="od">Odessa</option>
-                            <option value="ky">Kiev</option>
-                            <option value="lv">Lvov</option>
+                        <Form.Select required defaultValue="">
+                            <option value="" disabled>Select your country</option>
+                            {countries.map((c, i) => <option key={i} value={c.toLowerCase()}>{c}</option>)}
                         </Form.Select>
                     </Form.Group>
 
-                    <Button type="submit" className="btn-auth">
-                        Register
-                    </Button>
+                    <Button type="submit" className="btn-auth">Register</Button>
                 </Form>
             </div>
         </div>
