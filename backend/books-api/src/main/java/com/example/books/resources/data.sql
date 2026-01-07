@@ -13,12 +13,14 @@ CREATE TABLE books (
 );
 
 -- 3. Вставляємо дані, які React зможе "зрозуміти"
-INSERT INTO books (title, author, rating, price, image) VALUES 
-('Відьмак: Останнє бажання', 'Анджей Сапковський', 5, 480.00, 'https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=400'),
-('Дюна', 'Френк Герберт', 5, 550.00, 'https://images.unsplash.com/photo-1541963463532-d68292c34b19?q=80&w=400'),
-('Маленький принц', 'Антуан де Сент-Екзюпері', 5, 320.00, 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=400'),
-('Мистецтво війни', 'Сунь-цзи', 4, 290.00, 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=400'),
-('Тіні забутих предків', 'Михайло Коцюбинський', 5, 250.00, 'https://images.unsplash.com/photo-1614332287897-cdc485fa562d?q=80&w=400'),
-('Код да Вінчі', 'Ден Браун', 4, 420.00, 'https://images.unsplash.com/photo-1532012197267-da84d127e765?q=80&w=400'),
-('Шерлок Холмс', 'Артур Конан Дойл', 5, 380.00, 'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=400'),
-('Алхімік', 'Пауло Коельйо', 4, 310.00, 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?q=80&w=400');
+DELETE FROM books;
+
+INSERT INTO books (title, author, rating, price, last_rated, image) VALUES 
+('Відьмак: Останнє бажання', 'Анджей Сапковський', 5, 480.00, CURRENT_TIMESTAMP, 'https://images.unsplash.com/photo-1589998059171-988d887df646?q=80&w=400&auto=format&fit=crop'),
+('Дюна', 'Френк Герберт', 5, 550.00, DATEADD('DAY', -1, CURRENT_TIMESTAMP), 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=400&auto=format&fit=crop'),
+('Маленький принц', 'Антуан де Сент-Екзюпері', 5, 320.00, DATEADD('DAY', -3, CURRENT_TIMESTAMP), 'https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=400&auto=format&fit=crop'),
+('Мистецтво війни', 'Сунь-цзи', 4, 290.00, CURRENT_TIMESTAMP, 'https://images.unsplash.com/photo-1543004218-ee141104975a?q=80&w=400&auto=format&fit=crop'),
+('1984', 'Джордж Орвелл', 5, 350.00, CURRENT_TIMESTAMP, 'https://images.unsplash.com/photo-1541963463532-d68292c34b19?q=80&w=400&auto=format&fit=crop'),
+('Гаррі Поттер', 'Дж. К. Ролінґ', 5, 600.00, DATEADD('DAY', -2, CURRENT_TIMESTAMP), 'https://images.unsplash.com/photo-1626618012641-bfbca5a31239?q=80&w=400&auto=format&fit=crop'),
+('Кобзар', 'Тарас Шевченко', 5, 450.00, CURRENT_TIMESTAMP, 'https://images.unsplash.com/photo-1532012197367-2d5970d2d5d3?q=80&w=400&auto=format&fit=crop'),
+('Шерлок Холмс', 'Артур Конан Дойл', 5, 380.00, CURRENT_TIMESTAMP, 'https://images.unsplash.com/photo-1587876222912-3df9f022e89a?q=80&w=400&auto=format&fit=crop');

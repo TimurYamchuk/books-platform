@@ -1,5 +1,9 @@
+/Users/timuryamchuk/Desktop/books-platform/backend/books-api/src/main/java/com/example/books/DataInitializer.java
 /Users/timuryamchuk/Desktop/books-platform/backend/books-api/src/main/java/com/example/books/model/Book.java
+/Users/timuryamchuk/Desktop/books-platform/backend/books-api/src/main/java/com/example/books/controller/OrderController.java
+/Users/timuryamchuk/Desktop/books-platform/backend/books-api/src/main/java/com/example/books/model/User.java
 /Users/timuryamchuk/Desktop/books-platform/backend/books-api/src/main/java/com/example/books/BooksApplication.java
 /Users/timuryamchuk/Desktop/books-platform/backend/books-api/src/main/java/com/example/books/repository/BookRepository.java
+/Users/timuryamchuk/Desktop/books-platform/backend/books-api/src/main/java/com/example/books/WebConfig.java
 /Users/timuryamchuk/Desktop/books-platform/backend/books-api/src/main/java/com/example/books/controller/BookController.java
 /Users/timuryamchuk/Desktop/books-platform/backend/books-api/src/main/java/com/example/books/service/BookService.java
